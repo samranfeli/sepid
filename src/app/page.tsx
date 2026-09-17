@@ -1,69 +1,206 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Container } from "@/components/Container";
+import { CtaBanner } from "@/components/CtaBanner";
+import { FaqAccordion } from "@/components/FaqAccordion";
+import { ArrowIcon, BrandIcon, BuildingIcon, ChangesIcon, ExperienceIcon, PriceIcon, SpeedIcon, StarIcon, SupportIcon, ArticleIcon } from "@/components/icons";
+import { processSteps, site, trustStats, whyUs } from "@/lib/site";
+import { homeFaq } from "@/lib/faq";
+import { getSortedPosts } from "@/lib/blog";
 
-export default function Home() {
+const services = [
+  {
+    href: "/services/company-registration",
+    icon: BuildingIcon,
+    title: "ثبت شرکت",
+    description: "ثبت شرکت با مسئولیت محدود، سهامی خاص، موسسه غیرتجاری و موضوعات نیازمند مجوز.",
+  },
+  {
+    href: "/services/company-changes",
+    icon: ChangesIcon,
+    title: "تغییرات شرکت",
+    description: "انتقال سهام، افزایش سرمایه، تغییر آدرس، اعضای هیئت‌مدیره و انحلال شرکت.",
+  },
+  {
+    href: "/services/brand-registration",
+    icon: BrandIcon,
+    title: "ثبت برند",
+    description: "ثبت نشان تجاری و علامت اختصاصی برای حفظ هویت و اعتبار کسب‌وکار شما.",
+  },
+];
+
+const whyIcons = [SpeedIcon, SupportIcon, ExperienceIcon, PriceIcon];
+
+export default function HomePage() {
+  const latestPosts = getSortedPosts().slice(0, 3);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <section className="py-14 sm:py-20">
+        <Container className="grid items-center gap-12 md:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-sage-tint px-3.5 py-1.5 text-[13px] font-semibold text-sage">
+              <StarIcon />
+              مشاوره اولیه کاملاً رایگان
+            </span>
+            <h1 className="mb-3.5 mt-4.5 text-[32px] font-extrabold leading-[1.22] sm:text-[50px]">
+              ثبت شرکت و برند،
+              <br />
+              ساده و مطمئن
+            </h1>
+            <p className="mb-7 max-w-[46ch] text-[17px] leading-[1.9] text-ink-soft">
+              از انتخاب نوع شرکت تا دریافت آگهی تاسیس رسمی، هر مرحله را همراه شما و با شفافیت کامل انجام می‌دهیم — بدون
+              پیچیدگی و بدون سردرگمی.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={site.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-terracotta px-6.5 py-3.5 text-[15px] font-semibold text-[#2A1608] hover:bg-terracotta-dark"
+              >
+                مشاوره رایگان در واتساپ
+              </a>
+              <Link
+                href="/services/company-registration"
+                className="inline-flex items-center rounded-full border border-sage px-6.5 py-3.5 text-[15px] font-semibold text-sage hover:bg-sage-tint"
+              >
+                مشاهده خدمات
+              </Link>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center rounded-[28px] bg-sage-tint p-8">
+            <svg viewBox="0 0 320 280" fill="none" width="100%">
+              <rect x="70" y="30" width="130" height="170" rx="10" fill="#FFFFFF" stroke="#2F5D50" strokeWidth="2.5" />
+              <line x1="90" y1="62" x2="180" y2="62" stroke="#2F5D50" strokeWidth="2.5" strokeLinecap="round" />
+              <line x1="90" y1="82" x2="180" y2="82" stroke="#B9CBC2" strokeWidth="2.5" strokeLinecap="round" />
+              <line x1="90" y1="102" x2="160" y2="102" stroke="#B9CBC2" strokeWidth="2.5" strokeLinecap="round" />
+              <line x1="90" y1="130" x2="180" y2="130" stroke="#B9CBC2" strokeWidth="2.5" strokeLinecap="round" />
+              <line x1="90" y1="150" x2="150" y2="150" stroke="#B9CBC2" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="225" cy="175" r="46" fill="#D98E5B" opacity="0.16" />
+              <circle cx="225" cy="175" r="34" fill="none" stroke="#D98E5B" strokeWidth="3" />
+              <path d="M210 176L221 187L242 163" stroke="#D98E5B" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="60" cy="210" r="5" fill="#2F5D50" />
+              <circle cx="245" cy="55" r="4" fill="#D98E5B" />
+            </svg>
+          </div>
+        </Container>
+      </section>
+
+      <div className="bg-sage-dark text-[#F3F1E9]">
+        <Container className="grid grid-cols-2 gap-6 py-8 text-center sm:grid-cols-4">
+          {trustStats.map((stat) => (
+            <div key={stat.label}>
+              <b className="block text-[22px] font-extrabold tabular-nums text-terracotta sm:text-[30px]">{stat.value}</b>
+              <span className="mt-1 block text-[13.5px] text-[#D6DAD1]">{stat.label}</span>
+            </div>
+          ))}
+        </Container>
+      </div>
+
+      <section className="py-14 sm:py-20">
+        <Container>
+          <div className="mb-10 max-w-160">
+            <span className="inline-flex rounded-full bg-sage-tint px-3.5 py-1.5 text-[13px] font-semibold text-sage">خدمات ما</span>
+            <h2 className="mb-2.5 mt-3 text-[24px] font-extrabold sm:text-[34px]">هرچه برای شروع و توسعه کسب‌وکارتان لازم است</h2>
+            <p className="text-[15.5px] leading-[1.8] text-ink-soft">
+              از تاسیس شرکت تا تغییرات و ثبت برند، همه در یک مسیر مشخص و قابل پیگیری.
+            </p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-3">
+            {services.map((s) => (
+              <div key={s.href} className="flex flex-col gap-3.5 rounded-[22px] border border-line bg-surface p-7 shadow-[0_12px_30px_-18px_rgba(32,36,31,0.35)]">
+                <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-sage-tint text-sage">
+                  <s.icon />
+                </div>
+                <h3 className="text-[19px] font-bold">{s.title}</h3>
+                <p className="text-[14.5px] leading-[1.8] text-ink-soft">{s.description}</p>
+                <Link href={s.href} className="mt-auto flex items-center gap-1.5 text-[14px] font-bold text-sage-dark">
+                  مشاهده جزئیات
+                  <ArrowIcon />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-surface-soft py-14 sm:py-20">
+        <Container>
+          <div className="mb-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step, i) => (
+              <div key={step.title}>
+                <div className="mb-3.5 flex h-8.5 w-8.5 items-center justify-center rounded-full bg-terracotta-tint text-[14px] font-extrabold tabular-nums text-terracotta-dark">
+                  {i + 1}
+                </div>
+                <h4 className="mb-1.5 text-[16px] font-bold">{step.title}</h4>
+                <p className="text-[14px] leading-[1.75] text-ink-soft">{step.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mb-10 max-w-160">
+            <span className="inline-flex rounded-full bg-sage-tint px-3.5 py-1.5 text-[13px] font-semibold text-sage">چرا سپید ثبت</span>
+            <h2 className="mb-2.5 mt-3 text-[24px] font-extrabold sm:text-[34px]">تفاوت ما در جزئیات است</h2>
+          </div>
+          <div className="grid gap-4.5 sm:grid-cols-2 lg:grid-cols-4">
+            {whyUs.map((item, i) => {
+              const Icon = whyIcons[i];
+              return (
+                <div key={item.title} className="rounded-2xl border border-line bg-surface p-6">
+                  <div className="mb-3 text-sage">
+                    <Icon />
+                  </div>
+                  <h4 className="mb-1.5 text-[15.5px] font-bold">{item.title}</h4>
+                  <p className="text-[13.5px] leading-[1.75] text-ink-soft">{item.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14 sm:py-20">
+        <Container>
+          <div className="mb-10 max-w-160">
+            <span className="inline-flex rounded-full bg-sage-tint px-3.5 py-1.5 text-[13px] font-semibold text-sage">سوالات متداول</span>
+            <h2 className="mb-2.5 mt-3 text-[24px] font-extrabold sm:text-[34px]">پاسخ پرتکرارترین سوالات شما</h2>
+          </div>
+          <FaqAccordion items={[...homeFaq]} defaultOpenIndex={0} />
+          <Link href="/faq" className="mt-6 inline-flex items-center gap-1.5 text-[14.5px] font-bold text-sage-dark">
+            مشاهده همه سوالات
+            <ArrowIcon />
+          </Link>
+        </Container>
+      </section>
+
+      <section className="py-14 sm:py-20">
+        <Container>
+          <div className="mb-10 max-w-160">
+            <span className="inline-flex rounded-full bg-sage-tint px-3.5 py-1.5 text-[13px] font-semibold text-sage">وبلاگ</span>
+            <h2 className="mb-2.5 mt-3 text-[24px] font-extrabold sm:text-[34px]">راهنماهای ثبت شرکت و برند</h2>
+          </div>
+          <div className="grid gap-5.5 sm:grid-cols-3">
+            {latestPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="overflow-hidden rounded-[22px] border border-line bg-surface shadow-[0_12px_30px_-18px_rgba(32,36,31,0.35)]"
+              >
+                <div className="flex aspect-16/10 items-center justify-center bg-sage-tint text-sage">
+                  <ArticleIcon />
+                </div>
+                <div className="px-5.5 pb-6 pt-5">
+                  <span className="text-[12px] font-bold text-terracotta-dark">{post.tag}</span>
+                  <h4 className="mt-2 text-[16.5px] font-bold leading-[1.6]">{post.title}</h4>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <CtaBanner title="آماده شروع هستید؟" description="همین حالا با یک کارشناس صحبت کنید — بدون هزینه و بدون تعهد." />
+    </>
   );
 }
