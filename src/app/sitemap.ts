@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { blogPosts } from "@/lib/blog";
+import { changeDetails } from "@/lib/changes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -12,8 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/company-registration",
     "/services/company-registration/llc",
     "/services/company-registration/joint-stock",
+    "/services/company-registration/موسسه-غیرتجاری",
+    "/services/company-registration/موضوعات-نیازمند-مجوز",
     "/services/company-changes",
     "/services/brand-registration",
+    "/services/legal-books-sealing",
   ].map((path) => ({
     url: `${site.url}${path}`,
     lastModified: new Date(),
@@ -24,5 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const changeRoutes = Object.keys(changeDetails).map((slug) => ({
+    url: `${site.url}/services/company-changes/${slug}`,
+    lastModified: new Date(),
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...changeRoutes];
 }

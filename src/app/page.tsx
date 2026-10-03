@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { CtaBanner } from "@/components/CtaBanner";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { ArrowIcon, BrandIcon, BuildingIcon, ChangesIcon, ExperienceIcon, PriceIcon, SpeedIcon, StarIcon, SupportIcon, ArticleIcon } from "@/components/icons";
+import { ArrowIcon, BrandIcon, BuildingIcon, ChangesIcon, ExperienceIcon, PriceIcon, SealIcon, SpeedIcon, StarIcon, SupportIcon } from "@/components/icons";
 import { processSteps, site, trustStats, whyUs } from "@/lib/site";
 import { homeFaq } from "@/lib/faq";
 import { getSortedPosts } from "@/lib/blog";
@@ -25,6 +26,12 @@ const services = [
     icon: BrandIcon,
     title: "ثبت برند",
     description: "ثبت نشان تجاری و علامت اختصاصی برای حفظ هویت و اعتبار کسب‌وکار شما.",
+  },
+  {
+    href: "/services/legal-books-sealing",
+    icon: SealIcon,
+    title: "پلمپ دفاتر قانونی",
+    description: "پلمپ دفتر کل و روزنامه شرکت، پیش از شروع سال مالی و تهیه اظهارنامه مالیاتی.",
   },
 ];
 
@@ -69,20 +76,24 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-center rounded-[28px] bg-sage-tint p-8">
-            <svg viewBox="0 0 320 280" fill="none" width="100%">
-              <rect x="70" y="30" width="130" height="170" rx="10" fill="#FFFFFF" stroke="#2F5D50" strokeWidth="2.5" />
-              <line x1="90" y1="62" x2="180" y2="62" stroke="#2F5D50" strokeWidth="2.5" strokeLinecap="round" />
-              <line x1="90" y1="82" x2="180" y2="82" stroke="#B9CBC2" strokeWidth="2.5" strokeLinecap="round" />
-              <line x1="90" y1="102" x2="160" y2="102" stroke="#B9CBC2" strokeWidth="2.5" strokeLinecap="round" />
-              <line x1="90" y1="130" x2="180" y2="130" stroke="#B9CBC2" strokeWidth="2.5" strokeLinecap="round" />
-              <line x1="90" y1="150" x2="150" y2="150" stroke="#B9CBC2" strokeWidth="2.5" strokeLinecap="round" />
-              <circle cx="225" cy="175" r="46" fill="#D98E5B" opacity="0.16" />
-              <circle cx="225" cy="175" r="34" fill="none" stroke="#D98E5B" strokeWidth="3" />
-              <path d="M210 176L221 187L242 163" stroke="#D98E5B" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="60" cy="210" r="5" fill="#2F5D50" />
-              <circle cx="245" cy="55" r="4" fill="#D98E5B" />
-            </svg>
+          <div className="relative aspect-4/3 overflow-hidden rounded-[28px] bg-sage-tint sm:aspect-square">
+            <Image
+              src="/images/office-towers.jpg"
+              alt="ساختمان اداری مدرن"
+              fill
+              priority
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-x-5 bottom-5 flex items-center gap-3 rounded-2xl bg-surface/95 p-4 shadow-[0_12px_30px_-18px_rgba(32,36,31,0.45)] backdrop-blur">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-terracotta-tint text-terracotta-dark">
+                <StarIcon />
+              </div>
+              <div>
+                <b className="block text-[15px] font-extrabold">+۲٬۴۰۰ شرکت ثبت‌شده</b>
+                <span className="text-[12.5px] text-ink-soft">در سراسر ایران</span>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
@@ -107,7 +118,7 @@ export default function HomePage() {
               از تاسیس شرکت تا تغییرات و ثبت برند، همه در یک مسیر مشخص و قابل پیگیری.
             </p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
               <div key={s.href} className="flex flex-col gap-3.5 rounded-[22px] border border-line bg-surface p-7 shadow-[0_12px_30px_-18px_rgba(32,36,31,0.35)]">
                 <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-sage-tint text-sage">
@@ -187,8 +198,14 @@ export default function HomePage() {
                 href={`/blog/${post.slug}`}
                 className="overflow-hidden rounded-[22px] border border-line bg-surface shadow-[0_12px_30px_-18px_rgba(32,36,31,0.35)]"
               >
-                <div className="flex aspect-16/10 items-center justify-center bg-sage-tint text-sage">
-                  <ArticleIcon />
+                <div className="relative aspect-16/10 overflow-hidden bg-sage-tint">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="px-5.5 pb-6 pt-5">
                   <span className="text-[12px] font-bold text-terracotta-dark">{post.tag}</span>

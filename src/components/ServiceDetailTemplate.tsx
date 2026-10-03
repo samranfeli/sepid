@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ServiceDetail } from "@/lib/services";
 import { Container } from "./Container";
 import { Breadcrumb } from "./Breadcrumb";
@@ -36,20 +37,27 @@ export function ServiceDetailTemplate({
       <Breadcrumb items={breadcrumbItems} />
 
       <section className="bg-sage-tint pb-14 pt-6 sm:pb-16">
-        <Container>
-          <span className="inline-flex items-center rounded-full bg-white px-3.5 py-1.5 text-[13px] font-semibold text-sage">
-            {service.eyebrow}
-          </span>
-          <h1 className="mb-3 mt-4 max-w-[24ch] text-[28px] font-extrabold leading-tight sm:text-[42px]">{service.title}</h1>
-          <p className="max-w-[60ch] text-[16.5px] leading-[1.9] text-ink-soft">{service.heroLead}</p>
-          <a
-            href={site.whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-7 inline-flex rounded-full bg-terracotta px-7 py-3.5 text-[15px] font-semibold text-[#2A1608] hover:bg-terracotta-dark"
-          >
-            مشاوره رایگان همین حالا
-          </a>
+        <Container className={service.heroImage ? "grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]" : undefined}>
+          <div>
+            <span className="inline-flex items-center rounded-full bg-white px-3.5 py-1.5 text-[13px] font-semibold text-sage">
+              {service.eyebrow}
+            </span>
+            <h1 className="mb-3 mt-4 max-w-[24ch] text-[28px] font-extrabold leading-tight sm:text-[42px]">{service.title}</h1>
+            <p className="max-w-[60ch] text-[16.5px] leading-[1.9] text-ink-soft">{service.heroLead}</p>
+            <a
+              href={site.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-7 inline-flex rounded-full bg-terracotta px-7 py-3.5 text-[15px] font-semibold text-[#2A1608] hover:bg-terracotta-dark"
+            >
+              مشاوره رایگان همین حالا
+            </a>
+          </div>
+          {service.heroImage && (
+            <div className="relative aspect-4/3 overflow-hidden rounded-[22px] shadow-[0_18px_40px_-20px_rgba(32,36,31,0.4)] sm:aspect-16/11">
+              <Image src={service.heroImage} alt={service.title} fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" priority />
+            </div>
+          )}
         </Container>
       </section>
 
@@ -99,6 +107,19 @@ export function ServiceDetailTemplate({
                 ))}
               </div>
             </div>
+
+            {service.notes && service.notes.length > 0 && (
+              <div>
+                <h2 className="mb-5 text-[22px] font-extrabold">نکات تکمیلی</h2>
+                <div className="flex flex-col gap-2.5">
+                  {service.notes.map((note) => (
+                    <div key={note} className="rounded-xl border border-line bg-surface-soft px-4.5 py-3.5 text-[14px] leading-[1.8] text-ink-soft">
+                      {note}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <aside className="sticky top-28 rounded-[22px] border border-line bg-surface p-6 shadow-[0_12px_30px_-18px_rgba(32,36,31,0.35)]">

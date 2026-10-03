@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CtaBanner } from "@/components/CtaBanner";
-import { ArticleIcon } from "@/components/icons";
 import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
 import { blogPosts, getPostBySlug, getSortedPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
@@ -73,8 +73,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
             <h1 className="mb-8 mt-3 text-[26px] font-extrabold leading-tight sm:text-[36px]">{post.title}</h1>
 
-            <div className="mb-10 flex aspect-16/7 items-center justify-center rounded-[22px] bg-sage-tint text-sage">
-              <ArticleIcon />
+            <div className="relative mb-10 aspect-16/7 overflow-hidden rounded-[22px] bg-sage-tint">
+              <Image src={post.image} alt={post.title} fill sizes="(min-width: 768px) 70ch, 100vw" className="object-cover" priority />
             </div>
 
             <div className="flex flex-col gap-8">

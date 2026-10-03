@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/Container";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CtaBanner } from "@/components/CtaBanner";
@@ -33,7 +34,20 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <div className="bg-sage-dark text-[#F3F1E9]">
+      <Container>
+        <div className="relative aspect-21/9 overflow-hidden rounded-[22px] sm:aspect-[21/7]">
+          <Image
+            src="/images/handshake-office.jpg"
+            alt="همکاری و مشاوره تخصصی سپید ثبت"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+      </Container>
+
+      <div className="mt-14 bg-sage-dark text-[#F3F1E9]">
         <Container className="grid grid-cols-2 gap-6 py-8 text-center sm:grid-cols-4">
           {trustStats.map((stat) => (
             <div key={stat.label}>

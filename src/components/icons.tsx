@@ -158,6 +158,16 @@ export function InstagramIcon({ className }: IconProps) {
   );
 }
 
+export function SealIcon({ className }: IconProps) {
+  return (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="9" r="6" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M9.5 8.7l1.8 1.8 3.2-3.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 14.5L7 22l5-2.5 5 2.5-2-7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function ArticleIcon({ className }: IconProps) {
   return (
     <svg className={className} width="40" height="40" viewBox="0 0 24 24" fill="none">

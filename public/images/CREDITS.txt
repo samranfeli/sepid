@@ -1,0 +1,30 @@
+Images sourced from Wikimedia Commons. All used under their stated open licenses.
+
+handshake-office.jpg
+  "Business man and woman handshake in work office.jpg"
+  Author: perzon seo | License: CC BY 2.0
+  https://commons.wikimedia.org/wiki/File:Business_man_and_woman_handshake_in_work_office.jpg
+
+legal-contract-signature.jpg
+  "Legal Contract & Signature - Warm Tones.jpg"
+  Author: Blogtrepreneur | License: CC BY 2.0
+  https://commons.wikimedia.org/wiki/File:Legal_Contract_%26_Signature_-_Warm_Tones.jpg
+
+office-towers.jpg
+  "Modern office towers with retail promenade in Hyderabad, Telangana, India.jpg"
+  License: CC0 (public domain, no attribution required)
+  https://commons.wikimedia.org/wiki/File:Modern_office_towers_with_retail_promenade_in_Hyderabad,_Telangana,_India.jpg
+
+notebook-laptop-workspace.jpg
+  "Person writing in notebook while using laptop at a modern workspace.jpg"
+  Author: Shixart1985 | License: CC BY 2.0
+  https://commons.wikimedia.org/wiki/File:Person_writing_in_notebook_while_using_laptop_at_a_modern_workspace.jpg
+
+notebook-desk.jpg
+  "Person writing in a notebook while sitting at a desk.jpg"
+  Author: Shixart1985 | License: CC BY 2.0
+  https://commons.wikimedia.org/wiki/File:Person_writing_in_a_notebook_while_sitting_at_a_desk.jpg
+
+Note: CC BY 2.0 requires attribution. Before using this project commercially,
+either keep this credit file reachable from the site (e.g. a footer/credits link)
+or replace these images with licensed/purchased stock photography.

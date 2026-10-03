@@ -25,6 +25,7 @@ export const footerServiceLinks = [
   { href: "/services/company-registration", label: "ثبت شرکت" },
   { href: "/services/company-changes", label: "تغییرات شرکت" },
   { href: "/services/brand-registration", label: "ثبت برند" },
+  { href: "/services/legal-books-sealing", label: "پلمپ دفاتر قانونی" },
 ] as const;
 
 export const footerCompanyLinks = [

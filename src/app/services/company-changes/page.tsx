@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CtaBanner } from "@/components/CtaBanner";
 import { FaqAccordion } from "@/components/FaqAccordion";
+import { ArrowIcon } from "@/components/icons";
 import { JsonLd, breadcrumbSchema, faqPageSchema } from "@/components/JsonLd";
 import { companyChanges, companyChangesFaq } from "@/lib/services";
 import { site } from "@/lib/site";
@@ -21,25 +24,37 @@ export default function CompanyChangesPage() {
       <Breadcrumb items={[{ label: "خانه", href: "/" }, { label: "تغییرات شرکت" }]} />
 
       <section className="bg-sage-tint pb-14 pt-6 sm:pb-16">
-        <Container>
-          <span className="inline-flex items-center rounded-full bg-white px-3.5 py-1.5 text-[13px] font-semibold text-sage">
-            تغییرات شرکت
-          </span>
-          <h1 className="mb-3 mt-4 max-w-[22ch] text-[28px] font-extrabold leading-tight sm:text-[42px]">
-            هر تغییری در شرکت شما، رسمی و قانونی
-          </h1>
-          <p className="max-w-[62ch] text-[16.5px] leading-[1.9] text-ink-soft">
-            از انتقال سهام گرفته تا انحلال شرکت، تمام تغییرات باید در صورت‌جلسه ثبت و به اداره ثبت شرکت‌ها اعلام شود. ما
-            این فرآیند را برای شما ساده و سریع انجام می‌دهیم.
-          </p>
-          <a
-            href={site.whatsappHref}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-7 inline-flex rounded-full bg-terracotta px-7 py-3.5 text-[15px] font-semibold text-[#2A1608] hover:bg-terracotta-dark"
-          >
-            مشاوره رایگان همین حالا
-          </a>
+        <Container className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <span className="inline-flex items-center rounded-full bg-white px-3.5 py-1.5 text-[13px] font-semibold text-sage">
+              تغییرات شرکت
+            </span>
+            <h1 className="mb-3 mt-4 max-w-[22ch] text-[28px] font-extrabold leading-tight sm:text-[42px]">
+              هر تغییری در شرکت شما، رسمی و قانونی
+            </h1>
+            <p className="max-w-[62ch] text-[16.5px] leading-[1.9] text-ink-soft">
+              از انتقال سهام گرفته تا انحلال شرکت، تمام تغییرات باید در صورت‌جلسه ثبت و به اداره ثبت شرکت‌ها اعلام شود. ما
+              این فرآیند را برای شما ساده و سریع انجام می‌دهیم.
+            </p>
+            <a
+              href={site.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-7 inline-flex rounded-full bg-terracotta px-7 py-3.5 text-[15px] font-semibold text-[#2A1608] hover:bg-terracotta-dark"
+            >
+              مشاوره رایگان همین حالا
+            </a>
+          </div>
+          <div className="relative aspect-4/3 overflow-hidden rounded-[22px] shadow-[0_18px_40px_-20px_rgba(32,36,31,0.4)] sm:aspect-16/11">
+            <Image
+              src="/images/notebook-desk.jpg"
+              alt="ثبت تغییرات شرکت"
+              fill
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </Container>
       </section>
 
@@ -47,10 +62,18 @@ export default function CompanyChangesPage() {
         <Container>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {companyChanges.map((change) => (
-              <div key={change.title} className="rounded-2xl border border-line bg-surface p-6">
-                <h3 className="mb-2 text-[16.5px] font-bold">{change.title}</h3>
+              <Link
+                key={change.title}
+                href={`/services/company-changes/${change.slug}`}
+                className="flex flex-col gap-2 rounded-2xl border border-line bg-surface p-6 transition-transform hover:-translate-y-0.5"
+              >
+                <h3 className="text-[16.5px] font-bold">{change.title}</h3>
                 <p className="text-[14px] leading-[1.8] text-ink-soft">{change.description}</p>
-              </div>
+                <span className="mt-auto flex items-center gap-1.5 pt-2 text-[13.5px] font-bold text-sage-dark">
+                  راهنمای کامل
+                  <ArrowIcon />
+                </span>
+              </Link>
             ))}
           </div>
         </Container>

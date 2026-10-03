@@ -4,17 +4,19 @@ export type BlogPost = {
   tag: string;
   excerpt: string;
   date: string; // ISO
+  image: string;
   sections: { heading: string; body: string[] }[];
 };
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "modat-zaman-sabt-sherkat",
+    slug: "مدت-زمان-ثبت-شرکت",
     title: "ثبت شرکت چقدر طول می‌کشد؟ مراحل گام‌به‌گام",
     tag: "ثبت شرکت",
     excerpt:
       "از انتخاب نام تا دریافت آگهی تاسیس، در این مقاله زمان‌بندی واقعی هر مرحله ثبت شرکت را بررسی می‌کنیم.",
     date: "2026-09-15",
+    image: "/images/legal-contract-signature.jpg",
     sections: [
       {
         heading: "چرا زمان ثبت شرکت متفاوت است؟",
@@ -49,12 +51,13 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "tafavot-masoliat-mahdood-sahami-khas",
+    slug: "تفاوت-مسئولیت-محدود-و-سهامی-خاص",
     title: "تفاوت شرکت با مسئولیت محدود و سهامی خاص؛ کدام را انتخاب کنیم؟",
     tag: "راهنما",
     excerpt:
       "دو گزینه رایج برای ثبت شرکت در ایران را از نظر ساختار، مسئولیت و الزامات قانونی مقایسه می‌کنیم.",
     date: "2026-09-10",
+    image: "/images/handshake-office.jpg",
     sections: [
       {
         heading: "ساختار سهامداری",
@@ -83,12 +86,13 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "madarek-sabte-brand",
+    slug: "مدارک-ثبت-برند",
     title: "مدارک لازم برای ثبت برند در ایران",
     tag: "ثبت برند",
     excerpt:
       "پیش از شروع فرآیند ثبت برند، این مدارک را آماده کنید تا روند کار سریع‌تر و بدون وقفه پیش برود.",
     date: "2026-09-05",
+    image: "/images/notebook-laptop-workspace.jpg",
     sections: [
       {
         heading: "مدارک هویتی مالک برند",
@@ -117,12 +121,13 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "hazine-haye-sabte-sherkat",
+    slug: "هزینه-های-ثبت-شرکت",
     title: "هزینه‌های ثبت شرکت: چه مواردی را باید در نظر بگیرید؟",
     tag: "ثبت شرکت",
     excerpt:
       "هزینه ثبت شرکت فقط شامل تعرفه دولتی نیست؛ در این مقاله تمام اجزای هزینه را شفاف بررسی می‌کنیم.",
     date: "2026-08-28",
+    image: "/images/notebook-desk.jpg",
     sections: [
       {
         heading: "هزینه‌های دولتی ثبت",
@@ -151,12 +156,13 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "eshtebahat-raye-sabte-sherkat",
+    slug: "اشتباهات-رایج-ثبت-شرکت",
     title: "اشتباهات رایج هنگام ثبت شرکت که باید از آن‌ها اجتناب کرد",
     tag: "راهنما",
     excerpt:
       "بسیاری از تاخیرها و مشکلات بعد از ثبت شرکت، ریشه در چند اشتباه رایج و قابل‌پیشگیری دارند.",
     date: "2026-08-22",
+    image: "/images/legal-contract-signature.jpg",
     sections: [
       {
         heading: "انتخاب نام نامناسب یا تکراری",
@@ -191,12 +197,13 @@ export const blogPosts: BlogPost[] = [
     ],
   },
   {
-    slug: "moasese-gheyre-tejari-chist",
+    slug: "موسسه-غیرتجاری-چیست",
     title: "ثبت شرکت غیرتجاری (موسسه) چیست و چه تفاوتی با شرکت تجاری دارد؟",
     tag: "ثبت شرکت",
     excerpt:
       "برای فعالیت‌های فرهنگی، آموزشی یا خیریه، موسسه غیرتجاری معمولاً گزینه مناسب‌تری نسبت به شرکت تجاری است.",
     date: "2026-08-15",
+    image: "/images/office-towers.jpg",
     sections: [
       {
         heading: "تعریف موسسه غیرتجاری",

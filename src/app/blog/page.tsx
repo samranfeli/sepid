@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { ArticleIcon } from "@/components/icons";
 import { getSortedPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -37,8 +37,14 @@ export default function BlogIndexPage() {
                 href={`/blog/${post.slug}`}
                 className="overflow-hidden rounded-[22px] border border-line bg-surface shadow-[0_12px_30px_-18px_rgba(32,36,31,0.35)]"
               >
-                <div className="flex aspect-16/10 items-center justify-center bg-sage-tint text-sage">
-                  <ArticleIcon />
+                <div className="relative aspect-16/10 overflow-hidden bg-sage-tint">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="px-5.5 pb-6 pt-5">
                   <div className="flex items-center gap-2.5 text-[12px] text-ink-soft">
