@@ -15,7 +15,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(decodeURIComponent(slug));
   if (!post) return {};
   return {
     title: post.title,
@@ -30,7 +30,7 @@ function formatDate(iso: string) {
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(decodeURIComponent(slug));
   if (!post) notFound();
 
   const related = getSortedPosts()

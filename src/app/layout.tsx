@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="fa" dir="rtl" className={vazirmatn.variable}>
+    <html lang="fa" dir="rtl" className={vazirmatn.variable} data-scroll-behavior="smooth">
       <body className="font-sans antialiased">
         <JsonLd data={legalServiceSchema} />
         <SiteHeader />

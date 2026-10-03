@@ -382,6 +382,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
 };
 
 export const registrationTypeRoutes: Record<string, string> = {
+  "مسئولیت-محدود": "llc",
+  "سهامی-خاص": "joint-stock",
   "موسسه-غیرتجاری": "non-commercial",
   "موضوعات-نیازمند-مجوز": "permit-required",
 };
@@ -389,7 +391,7 @@ export const registrationTypeRoutes: Record<string, string> = {
 export const registrationTypes = [
   {
     slug: "llc",
-    href: "/services/company-registration/llc",
+    href: "/services/company-registration/مسئولیت-محدود",
     title: "شرکت با مسئولیت محدود",
     bestFor: "کسب‌وکارهای کوچک و متوسط",
     partners: "حداقل ۲ نفر",
@@ -397,7 +399,7 @@ export const registrationTypes = [
   },
   {
     slug: "joint-stock",
-    href: "/services/company-registration/joint-stock",
+    href: "/services/company-registration/سهامی-خاص",
     title: "شرکت سهامی خاص",
     bestFor: "شرکت‌های با ساختار سهامداری و سرمایه‌گذاری",
     partners: "حداقل ۳ سهامدار + ۲ بازرس",
