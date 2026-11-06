@@ -4,6 +4,7 @@ import { Container } from "./Container";
 import { Breadcrumb } from "./Breadcrumb";
 import { FaqAccordion } from "./FaqAccordion";
 import { CtaBanner } from "./CtaBanner";
+import { DocumentTabs } from "./DocumentTabs";
 import { CheckIcon, DocIcon } from "./icons";
 import { JsonLd, breadcrumbSchema, faqPageSchema } from "./JsonLd";
 import { site } from "@/lib/site";
@@ -97,15 +98,19 @@ export function ServiceDetailTemplate({
             </div>
 
             <div>
-              <h2 className="mb-5 text-[22px] font-extrabold">مدارک مورد نیاز</h2>
-              <div className="flex flex-col gap-2.5">
-                {service.documents.map((doc) => (
-                  <div key={doc} className="flex items-center gap-3 rounded-xl border border-line bg-surface px-4.5 py-3.5 text-[14.5px]">
-                    <DocIcon className="shrink-0 text-terracotta-dark" />
-                    {doc}
-                  </div>
-                ))}
-              </div>
+              <h2 className="mb-5 text-[22px] font-extrabold">{service.documentsTitle ?? "مدارک مورد نیاز"}</h2>
+              {service.documentTabs ? (
+                <DocumentTabs tabs={service.documentTabs} note={service.documentsNote} />
+              ) : (
+                <div className="flex flex-col gap-2.5">
+                  {service.documents.map((doc) => (
+                    <div key={doc} className="flex items-center gap-3 rounded-xl border border-line bg-surface px-4.5 py-3.5 text-[14.5px]">
+                      <DocIcon className="shrink-0 text-terracotta-dark" />
+                      {doc}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {service.notes && service.notes.length > 0 && (

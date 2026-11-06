@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog",
     "/services/company-registration",
     "/services/company-registration/مسئولیت-محدود",
-    "/services/company-registration/سهامی-خاص",
     "/services/company-registration/موسسه-غیرتجاری",
     "/services/company-registration/موضوعات-نیازمند-مجوز",
     "/services/company-changes",

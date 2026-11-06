@@ -5,7 +5,7 @@ import { Container } from "@/components/Container";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CtaBanner } from "@/components/CtaBanner";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { ArrowIcon } from "@/components/icons";
+import { ArrowIcon, DocIcon } from "@/components/icons";
 import { JsonLd, breadcrumbSchema, faqPageSchema } from "@/components/JsonLd";
 import { companyChanges, companyChangesFaq } from "@/lib/services";
 import { site } from "@/lib/site";
@@ -14,6 +14,57 @@ export const metadata: Metadata = {
   title: "تغییرات شرکت",
   description: "انتقال سهام، افزایش و کاهش سرمایه، تغییر آدرس، اعضای هیئت‌مدیره، اصلاح اساسنامه و انحلال شرکت — با مشاوره رایگان سپید ثبت.",
 };
+
+const changeSteps = [
+  {
+    title: "بررسی نوع تغییر و ارائه مشاوره",
+    description: "بررسی درخواست متقاضی و تعیین مجمع و تشریفات قانونی متناسب با نوع تغییر موردنظر."    
+  },
+  {
+    title: "برگزاری مجمع یا جلسه مربوطه",
+    description: "برگزاری مجمع عمومی یا جلسه هیئت‌مدیره متناسب با نوع تغییر و اتخاذ تصمیمات لازم توسط اعضا و سهامداران."    
+  },
+  {
+    title: "تنظیم و امضای صورتجلسه",
+    description: "تنظیم صورتجلسه رسمی مطابق مقررات و اخذ امضای اعضا، سهامداران یا اشخاص ذی‌صلاح."    
+  },
+  {
+    title: "ثبت اطلاعات در سامانه ثبت شرکت‌ها",
+    description: "ورود دقیق اطلاعات و تصمیمات اتخاذشده در سامانه ثبت شرکت‌ها و تکمیل فرآیند پذیرش درخواست."    
+  },
+  {
+    title: "ارسال مدارک و پیگیری پرونده",
+    description: "ارسال مدارک و مستندات موردنیاز به اداره ثبت شرکت‌ها و پیگیری پرونده تا بررسی و اعلام نتیجه توسط کارشناسان."    
+  },
+  {
+    title: "دریافت آگهی و انتشار در روزنامه رسمی",
+    description: "پس از تأیید نهایی، آگهی تغییرات دریافت شده و جهت انتشار در روزنامه رسمی ارسال می‌شود."    
+  },
+];
+
+const requiredDocuments = [
+  {
+    title: "مدارک ثبتی شرکت یا مؤسسه",
+    bullets: ["آگهی تأسیس", "آخرین آگهی تغییرات", "اساسنامه، شرکت‌نامه یا اظهارنامه، حسب مورد"],
+  },
+  {
+    title: "تصویر مدارک هویتی اعضا، مدیران و سهامداران",
+    description: "تصویر کارت ملی و شناسنامه اعضای هیئت‌مدیره، مدیرعامل، شرکا یا سهامداران، حسب نوع شرکت و نوع تغییر.",
+  },
+  {
+    title: "اطلاعات و مستندات مربوط به تغییر موردنظر",
+    description:
+      "ارائه اطلاعات و مدارک مرتبط با موضوع تغییر؛ برای مثال مدارک مربوط به نقل‌وانتقال سهام، تغییر آدرس، افزایش سرمایه، تغییر موضوع فعالیت، تغییر مدیران و...",
+  },
+  {
+    title: "مجوز فعالیت، در صورت نیاز",
+    description: "در صورتی که تغییر موردنظر نیازمند مجوز باشد، ارائه مجوز یا موافقت مرجع ذی‌صلاح الزامی است.",
+  },
+  {
+    title: "مدارک نماینده یا وکیل، در صورت وجود",
+    description: "در صورت انجام فرآیند توسط وکیل یا نماینده، ارائه وکالت‌نامه یا مدارک نمایندگی قانونی موردنیاز.",
+  },
+];
 
 export default function CompanyChangesPage() {
   return (
@@ -33,7 +84,7 @@ export default function CompanyChangesPage() {
               هر تغییری در شرکت شما، رسمی و قانونی
             </h1>
             <p className="max-w-[62ch] text-[16.5px] leading-[1.9] text-ink-soft">
-              از انتقال سهام گرفته تا انحلال شرکت، تمام تغییرات باید در صورت‌جلسه ثبت و به اداره ثبت شرکت‌ها اعلام شود. ما
+              از انتقال سهام گرفته تا انحلال شرکت، تمام تغییرات باید در صورتجلسه ثبت و به اداره ثبت شرکت‌ها اعلام شود. ما
               این فرآیند را برای شما ساده و سریع انجام می‌دهیم.
             </p>
             <a
@@ -79,7 +130,74 @@ export default function CompanyChangesPage() {
         </Container>
       </section>
 
-      <section className="pb-14 sm:pb-16">
+      <section className="bg-surface-soft py-14 sm:py-16">
+        <Container>
+          <div className="mb-10 max-w-160">
+            <span className="inline-flex rounded-full bg-sage-tint px-3.5 py-1.5 text-[13px] font-semibold text-sage">
+              مراحل کار
+            </span>
+            <h2 className="mb-2.5 mt-3 text-[24px] font-extrabold sm:text-[34px]">
+              مراحل انجام تغییرات در شرکت‌ها و مؤسسات
+            </h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {changeSteps.map((step, index) => (
+              <div key={step.title} className="rounded-2xl border border-line bg-surface p-6">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-sage-tint text-[15px] font-extrabold text-sage-dark">
+                  {(index + 1).toLocaleString("fa-IR")}
+                </span>
+                <h3 className="mb-2 text-[16.5px] font-bold">{step.title}</h3>
+                <p className="text-[14px] leading-[1.8] text-ink-soft">{step.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 rounded-2xl border border-line bg-surface p-6 text-[14.5px] leading-[1.85] text-ink-soft">
+            <span className="font-bold text-ink">نتیجه: </span>
+            از تنظیم صورتجلسه تا ثبت نهایی تغییرات، تمامی مراحل به‌صورت تخصصی و منظم پیگیری می‌شود.
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14 sm:py-16">
+        <Container>
+          <div className="mb-8 max-w-160">
+            <span className="inline-flex rounded-full bg-sage-tint px-3.5 py-1.5 text-[13px] font-semibold text-sage">
+              مدارک مورد نیاز
+            </span>
+            <h2 className="mb-2.5 mt-3 text-[24px] font-extrabold sm:text-[34px]">
+              مدارک مورد نیاز برای انجام تغییرات شرکت‌ها و مؤسسات
+            </h2>
+          </div>
+          <div className="flex flex-col gap-2.5">
+            {requiredDocuments.map((doc, i) => (
+              <div key={doc.title} className="flex items-start gap-3 rounded-xl border border-line bg-surface px-4.5 py-3.5">
+                <DocIcon className="mt-0.5 shrink-0 text-terracotta-dark" />
+                <div>
+                  <p className="text-[14.5px] font-semibold">
+                    <span className="tabular-nums">{(i + 1).toLocaleString("fa-IR")}. </span>
+                    {doc.title}
+                  </p>
+                  {doc.description && <p className="mt-1 text-[14px] leading-[1.8] text-ink-soft">{doc.description}</p>}
+                  {doc.bullets && (
+                    <ul className="mt-1.5 list-disc space-y-1 pr-5 text-[14px] leading-[1.8] text-ink-soft">
+                      {doc.bullets.map((b) => (
+                        <li key={b}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            <p className="text-[13px] leading-[1.8] text-ink-soft">
+              توجه: مدارک موردنیاز بر اساس نوع شرکت یا مؤسسه و نوع تغییر متفاوت است و پس از بررسی اولیه، مدارک دقیق به
+              متقاضی اعلام می‌شود.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-surface-soft py-14 sm:py-16">
         <Container>
           <span className="inline-flex rounded-full bg-sage-tint px-3.5 py-1.5 text-[13px] font-semibold text-sage">سوالات متداول</span>
           <h2 className="mb-7 mt-4 text-[22px] font-extrabold">سوالات درباره تغییرات شرکت</h2>
